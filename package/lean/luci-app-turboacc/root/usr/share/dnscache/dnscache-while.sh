@@ -26,7 +26,7 @@ do
 		if [ "${dns_caching_mode}" = "1" ]; then
 			${dnsprogram} -c "${dnsconf}" > "${logfile}" 2>&1 &
 		elif [ "${dns_caching_mode}" = "2" ]; then
-			${dnsprogram} -f "${dnsconf}" > "${logfile}" 2>&1 &
+			${dnsprogram} -f "${dnsconf}" >> "${logfile}" 2>&1 &
 		elif [ "${dns_caching_mode}" = "3" ]; then
 			${dnsprogram} -o "${logfile}" -l "127.0.0.1" -p "5333" -b "tls://9.9.9.9" -f "tls://8.8.8.8" -u "${dnsconf}" --all-servers --cache --cache-min-ttl=3600 > "${logfile}" 2>&1 &
 		fi
